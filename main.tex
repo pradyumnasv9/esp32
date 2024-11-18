@@ -1,0 +1,107 @@
+\documentclass[journal]{IEEEtran}
+%\documentclass[journal,a5paper]{IEEEtran}
+\usepackage[a5paper, margin=10mm]{geometry}
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+\usepackage{gvv-book}
+\usepackage{gvv}
+
+\makeindex
+
+\begin{document}
+\bibliographystyle{IEEEtran}
+\onecolumn
+
+
+\newpage
+%\twocolumn
+\onecolumn
+
+
+\numberwithin{figure}{section}
+\numberwithin{table}{section} 
+\numberwithin{equation}{section}
+\iffalse
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\renewcommand{\theequation}{\theenumi}
+\fi
+
+\section{ESP32}
+\subsection{Installation}
+For flashing the ESP32 through OTG follow the below steps:
+\begin{enumerate}
+	\item Install ArduinoDroid from apkpure.
+	\item Open ArduinoDroid and grant all permissions
+	\item Connect the ESP32 to your phone via USB-OTG and select the board \textbf{DOIT ESP32 DEVKIT V1} in ArduinoDroid using the below path.
+	\begin{lstlisting}
+Settings->Board type->ESP32->DOIT ESP32 DEVKIT V1
+	\end{lstlisting}
+	For ESP32 \textbf{NodeMCU}
+	\begin{lstlisting}
+Settings->Board type->ESP32->NodeMCU-32S
+	\end{lstlisting}
+	\item Run the blink program present in the below link
+	\begin{lstlisting}
+https://github.com/pradyumnasv9/esp32/ide/blink/blink.ino
+	\end{lstlisting}
+	The in-built led will start blinking.\\
+\end{enumerate}
+For flashing the ESP32 through OTA follow the below steps. 
+\begin{enumerate}
+	\item Before proceeding with flashing the ESP32 through OTA we need to make sure that the ESP32 to connected to the mobile hotspot by uploading the program in setup directory using otg. Below are the steps to do them:
+	\begin{enumerate}
+	\item Follow the steps 1 and 2 given in subsection 1.2.
+	\item Open the main.cpp file by excecuting the below command in termux and change the SSID and password mwntioned in the main.cpp code.
+	\begin{lstlisting}
+nvim /ide/ota/setup/src/main.cpp
+	\end{lstlisting}
+	\item In termux excecute the following to generate the bin file.
+	\begin{lstlisting}
+cd ide/ota/blink
+pio run
+	\end{lstlisting}
+	Copy the bin file generated to ArduinoDroid/precompiled directory using the following command:
+	\begin{lstlisting}
+cp .pio/build/esp32doit-devkit-v1/firmware.bin /sdcard/ArduinoDroid/precompiled/
+	\end{lstlisting}
+	\item Flash the bin file to ESP32 using ArduinoDroid. Open ArduinoDroid, 
+	\begin{lstlisting}
+Actions->Upload->Upload Precompiled->firmware.bin
+	\end{lstlisting}
+	After the upload is finished we get the below error in ArduinoDroid terminal. This indicates that the code is uploaded.
+	\begin{lstlisting}
+Error: open failed: ENOENT (No such file or directory)
+	\end{lstlisting}
+	Disconnect the power supply from ESP32 and reconnect it. The ESP32 will be connected to the wifi network mentioned in the main.cpp code.
+	\end{enumerate}
+	\item We will get the IP address to which the ESP32 will be connected to. Using this IP we can flash the code in ESP32 by excecuting the below commands
+	\begin{lstlisting}
+cd ide/ota/sevenseg/static
+pio run -t upload --upload-port 192.168.xx.xx #replace xx with IP of ESP32
+	\end{lstlisting}
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{figs/esp32.png}
+    \caption{ESP32 Devkit-v1}
+    \label{fig:esp32}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{figs/nodeMCU.png}
+    \caption{ESP32 NodeMCU}
+    \label{fig:nodemcu}
+\end{figure}
+\par The ESP32-devkit-v1 as shown in Figure \ref{fig:esp32} has some ground pins, ADC\brak{Analog to Digital Converter} input pins D2, D4, D12-D15, D25-D27, D32 and D33 that can be used for both input as well as output. It also has two power pin that can generate 3.3$V$.  In the following exercises, only the GND, 3.3$V$ and digital pins will be used. Similarly ESP32 NodeMCU as shown in \ref{fig:nodemcu} also has ADC pins startin with P instead of D.
+\
+\subsection{Seven Segment Display}
+\input{ide/sevenseg/main.tex}
+
+\subsection{7447}
+\input{ide/7447/main.tex}
+
+\subsection{7474}
+\input{ide/7474/main.tex}
+\end{document}
