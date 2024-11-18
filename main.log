@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.20)  18 NOV 2024 16:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.20)  18 NOV 2024 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1795,16 +1795,13 @@ L3 programming layer <2020/03/25>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 306B860C707E3627F0ADF0A7C2668035;507.
  ) 
 Here is how much of TeX's memory you used:
- 53880 strings out of 474222
- 1278393 string characters out of 5748733
- 2061975 words of memory out of 5000000
+ 53878 strings out of 474222
+ 1278364 string characters out of 5748733
+ 2065975 words of memory out of 5000000
  75253 multiletter control sequences out of 15000+600000
  625645 words of font info for 180 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
@@ -1815,10 +1812,10 @@ texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (4 pages, 1240684 bytes).
+Output written on main.pdf (4 pages, 1240515 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 67 named destinations out of 1000 (max. 500000)
+ 159 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
+ 65 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
